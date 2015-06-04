@@ -1,5 +1,7 @@
 class MarketsController < ApplicationController
 
+ # look into geonames.org
+ 
   def by_state
     puts "this is the state: #{params[:id]}"
     @markets = Market.where(state: params[:id].capitalize)

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'markets#by_state'
   get 'markets/by_state/:id' => 'markets#by_state'
   get 'market/by_id/:id' => 'markets#by_id'
-  get 'market/services/:id' => 'markets#services'
+  get 'market/:id/services' => 'markets#services'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
