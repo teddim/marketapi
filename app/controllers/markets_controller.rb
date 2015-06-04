@@ -1,10 +1,9 @@
 class MarketsController < ApplicationController
 
  # look into geonames.org
- 
+
   def by_state
-    puts "this is the state: #{params[:id]}"
-    @markets = Market.where(state: params[:id].capitalize)
+    @markets = Market.where("state = ?", params[:id].capitalize)
     @results = []
     @markets.each do |market|
       @results << {
@@ -15,8 +14,22 @@ class MarketsController < ApplicationController
     render :json => @results
   end
 
+  def by_city
+    city_name = params[:id]
+    @markets = Market.where("city = ?", params[:id].capitalize)
+    @results = []
+    @markets.each do |market|
+      @results << {
+        :id => market.id,
+        :city => market.city,
+        :state => market.state
+      }
+    end
+    render :json => @results
+  end
+
   def by_id
-    market = Market.where(id: params[:id]).first
+    market = Market.where("id = ?", params[:id]).first
     results = {
       :id => market.id,
       :city => market.city,
@@ -37,7 +50,7 @@ class MarketsController < ApplicationController
   end
 
   def services
-    market = Market.where(id: params[:id]).first
+    market = Market.where("id = ?", params[:id]).first
     results = {
       :id => market.id,
       :marketname => market.marketname,
