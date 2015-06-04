@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'markets#by_state'
   get 'markets/by_state/:id' => 'markets#by_state'
-  get 'market/by_id/:id' => 'markets#by_id'
+  get 'market/:id' => 'markets#by_id'
   get 'market/:id/services' => 'markets#services'
 
 
