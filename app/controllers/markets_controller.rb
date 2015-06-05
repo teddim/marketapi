@@ -6,7 +6,9 @@ class MarketsController < ApplicationController
     @markets.each do |market|
       @results << {
         :id => market.id,
-        :city => market.city
+        :city => market.city,
+        :longitude => market.x,
+        :latitude => market.y
       }
     end
     render :json => @results
@@ -20,7 +22,9 @@ class MarketsController < ApplicationController
       @results << {
         :id => market.id,
         :city => market.city,
-        :state => market.state
+        :state => market.state,
+        :longitude => market.x,
+        :latitude => market.y
       }
     end
     render :json => @results
