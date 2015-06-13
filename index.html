@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="U.S. Farmers Market API : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>U.S. Farmers Market API</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/teddim/marketapi">View on GitHub</a>
+
+          <h1 id="project_title">U.S. Farmers Market API</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/teddim/marketapi/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/teddim/marketapi/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>FORMAT: 1A
+HOST: farmersmarketsapi.heroku.com</p>
+
+<h1>
+<a id="the-us-farmers-market-api" class="anchor" href="#the-us-farmers-market-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>The US Farmers Market API</h1>
+
+<p>This API is based on Farmers Market Geographic Data - <a href="http://catalog.data.gov/dataset/farmers-markets-geographic-data">http://catalog.data.gov/dataset/farmers-markets-geographic-data</a>.
+It was designed to allow you to easily find markets by city, state or id and then find the services available at a particular market location.</p>
+
+<p>API created by: <a href="http://teddicodes.wordpress.com">http://teddicodes.wordpress.com</a></p>
+
+<h1>
+<a id="markets-by-state-marketsby_statestate" class="anchor" href="#markets-by-state-marketsby_statestate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markets by State [/markets/by_state/{state}]</h1>
+
+<ul>
+<li>
+<p>Model</p>
+
+<ul>
+<li>
+<p>Body</p>
+
+<pre><code>[
+    {
+        "id":23,
+        "city":"Larimer",
+        "state":"Colorado",
+        "longitude":-105.073,
+        "latitude":40.3954
+    },
+    {
+        "id":92,
+        "city":"Alamosa",
+        "state":"Colorado",
+        "longitude":-105.864687,
+        "latitude":37.467893
+    }
+]
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Parameters</p>
+
+<ul>
+<li>state (required, string, <code>colorado</code>) ... State name</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="retrieve-all-markets-by-state-get" class="anchor" href="#retrieve-all-markets-by-state-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieve all Markets by State [GET]</h1>
+
+<ul>
+<li>
+<p>Response 200 (application/json)</p>
+
+<p>[Markets by State][]</p>
+</li>
+</ul>
+
+<h1>
+<a id="markets-by-city-marketsby_citycity" class="anchor" href="#markets-by-city-marketsby_citycity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markets by City [/markets/by_city/{city}]</h1>
+
+<ul>
+<li>
+<p>Model</p>
+
+<ul>
+<li>
+<p>Body</p>
+
+<pre><code>[  
+    {
+        "id":1192,
+        "city":"Denver",
+        "state":"Colorado",
+        "longitude":-104.9593,
+        "latitude":39.71749
+    },
+    {
+        "id":1304,
+        "city":"Denver",
+        "state":"Colorado",
+        "longitude":-104.9574018,
+        "latitude":39.7401841
+    }
+]
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Parameters</p>
+
+<ul>
+<li>city (required, string, <code>denver</code>) ... City name</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="retrieve-all-markets-by-city-get" class="anchor" href="#retrieve-all-markets-by-city-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieve all Markets by City [GET]</h1>
+
+<ul>
+<li>
+<p>Response 200 (application/json)</p>
+
+<p>[Markets by City][]</p>
+</li>
+</ul>
+
+<h1>
+<a id="market-by-id-marketid" class="anchor" href="#market-by-id-marketid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Market by id [/market/{id}]</h1>
+
+<ul>
+<li>
+<p>Model</p>
+
+<ul>
+<li>
+<p>Body</p>
+
+<pre><code>{
+    "id":1304,
+    "city":"Denver",
+    "marketname":"City Park Esplanade Fresh Market",
+    "website":"http://www.coloradofreshmarkets.com/",
+    "street":"East Colfax Ave. and Columbine St.",
+    "county":
+    "Denver",
+    "state":"Colorado",
+    "zip":80206,
+    "season1date":"May 13 , 2012 to October 28, 2012",
+    "season1time":"sun:9:00 AM - 1:00 PM;",
+    "location":"Other",
+    "longitude":-104.9574018,
+    "latitude":39.7401841
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Parameters</p>
+
+<ul>
+<li>id (required, number, <code>1304</code>) ... Market id number</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="retrieve-a-market-by-id-get" class="anchor" href="#retrieve-a-market-by-id-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieve a Market by id [GET]</h1>
+
+<ul>
+<li>
+<p>Response 200 (application/json)</p>
+
+<p>[Market by id][]</p>
+</li>
+</ul>
+
+<h1>
+<a id="market-services-by-id-marketidservices" class="anchor" href="#market-services-by-id-marketidservices" aria-hidden="true"><span class="octicon octicon-link"></span></a>Market Services by id [/market/{id}/services]</h1>
+
+<ul>
+<li>
+<p>Model</p>
+
+<ul>
+<li>
+<p>Body</p>
+
+<pre><code>{
+    "id":1304,
+    "marketname":"City Park Esplanade Fresh Market",
+    "city":"Denver",
+    "website":"http://www.coloradofreshmarkets.com/",
+    "credit":false,
+    "wic":false,
+    "wiccash":false,
+    "sfmnp":false,
+    "snap":false,
+    "bakedgoods":false,
+    "cheese":false,
+    "crafts":false,
+    "flowers":false,
+    "eggs":false,
+    "seafood":false,
+    "herbs":false,
+    "vegetables":false,
+    "honey":false,
+    "jams":false,
+    "maple":false,
+    "meat":false,
+    "nursery":false,
+    "nuts":false,
+    "plants":false,
+    "poultry":false,
+    "prepared":false,
+    "soap":false,
+    "trees":false,
+    "wine":false
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Parameters</p>
+
+<ul>
+<li>id (required, string, <code>1304</code>) ... Numeric id of the market</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="retrieve-a-markets-services-get" class="anchor" href="#retrieve-a-markets-services-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieve a Market's services [GET]</h1>
+
+<ul>
+<li>
+<p>Response 200 (application/json)</p>
+
+<p>[Market Services by id][]</p>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">U.S. Farmers Market API maintained by <a href="https://github.com/teddim">teddim</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
