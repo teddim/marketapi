@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
 
   def by_state
-    @markets = Market.where("state = ?", params[:id].capitalize)
+    @markets = Market.where("translate(lower(state),' ','')LIKE ?", params[:id].downcase.gsub(' ',''))
     @results = []
     @markets.each do |market|
       @results << {
@@ -16,7 +16,7 @@ class MarketsController < ApplicationController
 
   def by_city
     city_name = params[:id]
-    @markets = Market.where("city = ?", params[:id].capitalize)
+    @markets = Market.where("translate(lower(city),' ','')LIKE ?", params[:id].downcase.gsub(' ',''))
     @results = []
     @markets.each do |market|
       @results << {
