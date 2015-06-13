@@ -1,5 +1,9 @@
 class MarketsController < ApplicationController
 
+  def how_to_use_marketapi
+
+  end
+
   def by_state
     @markets = Market.where("translate(lower(state),' ','')LIKE ?", params[:id].downcase.gsub(' ',''))
     @results = []
