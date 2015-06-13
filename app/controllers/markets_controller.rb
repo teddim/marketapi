@@ -7,6 +7,7 @@ class MarketsController < ApplicationController
       @results << {
         :id => market.id,
         :city => market.city,
+        :state => market.state,
         :longitude => market.x,
         :latitude => market.y
       }
